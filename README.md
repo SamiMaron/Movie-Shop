@@ -1,3 +1,5 @@
+# Movie Shop E-Commerce
+
 This project aims to build a modern e-commerce website allowing customers to browse movies, add them to a cart, and complete a purchase. It's developed using the Spring framework for the backend and React for the frontend. The website leverages the TMDB API to browse products.
 
 
