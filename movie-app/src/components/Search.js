@@ -5,6 +5,7 @@ import { SearchHistoryContext } from './SearchHistoryContext';
 import { CartContext} from "./CartContext";
 import { Card, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Suspense } from 'react';
 
 
 
@@ -18,7 +19,7 @@ import Button from 'react-bootstrap/Button';
 // The component returns a form will allow the user to input searches to peform the search or clear the history
 // it renders search results and search history
 
-
+const MovieDetails = React.lazy(() => import('./MovieDetails'));
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -97,7 +98,7 @@ const Search = () => {
 
     return (
         <div>
-            <input type={"text"} value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder={"Search term"}/>
+            <input type={"text"} value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder={"Search term"} />
             <select value={genre} onChange={e => setGenre(e.target.value)}>
                 <option value="">Select a genre</option>
                 {genres.map(genre => (
@@ -134,6 +135,10 @@ const Search = () => {
                     </div>
                 ))}
             </div>
+            {/* Lazy Load Movie Details */}
+            <Suspense fallback={<div>Loading...</div>}>
+                <MovieDetails />
+            </Suspense>
         </div>
     );
 };
