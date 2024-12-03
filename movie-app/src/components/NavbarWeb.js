@@ -10,10 +10,10 @@ import Nav from 'react-bootstrap/Nav';
 // NavbarWeb component is the navigation bar of the application
 // it uses cartContext in order to fetch the current items of the cart to display the amount in the cart link
 // it also has links to navigate to various routes like Home, Search, Cart and Checkout.
+// Optimized with React.memo for performance
 
 
-
-const NavbarWeb = () => {
+const NavbarWeb = React.memo( () => {
     const {cart} = useContext(CartContext);
 
     return(
@@ -30,7 +30,7 @@ const NavbarWeb = () => {
             </Container>
         </Navbar>
     );
-};
+});
 
 export default NavbarWeb;
 
